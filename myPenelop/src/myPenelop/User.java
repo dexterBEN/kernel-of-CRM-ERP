@@ -8,10 +8,14 @@ public class User {
 	String name;
 	List<String> contactUser;//Stocké tous les contacts des user
 	
-	//contructor:
+	//Constructor:
 	public User(int id, String name, ArrayList<String> contactUser) {
 		this.id = id ;
 		this.name = name;
 		this.contactUser = contactUser;
+	}
+	
+	public int getId() {
+		return id;
 	}
 }

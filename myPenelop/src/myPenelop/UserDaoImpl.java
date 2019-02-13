@@ -1,12 +1,16 @@
 package myPenelop;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoImpl implements IUserDao {
 	
+	//list is working as a database
+	   List<User> users;
+	
 	//constructor:
 	public UserDaoImpl() {
-		
+		users = new ArrayList<User>();
 	}
 
 	@Override
