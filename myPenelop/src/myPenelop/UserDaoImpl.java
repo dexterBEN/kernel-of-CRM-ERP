@@ -20,8 +20,13 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
-	public User getUser(int id) {
+	public User findUserById(int id) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public User findUserByName(String name) {
 		return null;
 	}
 

@@ -4,7 +4,8 @@ import java.util.List;
 public interface IUserDao {
 	
 	   public List<User> getAllUsers();
-	   public User getUser(int id);
+	   public User findUserById(int id);
+	   public User findUserByName(String name);
 	   public void updateUser(User user);
 	   public void deleteUser(User user);
 }
