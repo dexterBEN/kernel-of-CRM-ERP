@@ -1,60 +1,48 @@
 package myPenelop;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import myPenelop.dao.UserDaoImpl;
+
+import java.util.Scanner;
 
 public class Application {
 
 	public static void main(String[] args){
 		
-		JSONObject obj = new JSONObject();
-		JSONObject user = new JSONObject();
-		List<String> contactUser =  new ArrayList<String>();
-		contactUser.add("geoffrey");
-		contactUser.add("bart") ;
-		contactUser.add("karl") ;
+		System.out.println("What you want to do?");
+		System.out.println("To see the list of user write 1");
+		System.out.println("To get a specific user type 2");
+		Scanner inputUser = new Scanner(System.in);
 		
-		user.put("name", "john");
-		user.put("id", 123);
-		user.put("contacts", contactUser);
+		int choiceUser = inputUser.nextInt();
+		IUserDao userDao = new UserDaoImpl();
 		
-		
-		//List<String> li =new ArrayList();
-		//JSONObject class creates a json object,
-		//provides a put function to insert the details into json object
-		/*obj.put("name", "Abhishek Sharma");
-		obj.put("department","B.E");
-		obj.put("branch", "C.S.E");
-		obj.put("year", 3);*/
-
-		JSONArray list = new JSONArray();
-		
-		//This is a JSON Array List , 
-		//It creates an array and then add the values in it  
-		list.add("user 1");
-		list.add("nacer");
-		list.add("user 3");
-
-		obj.put("users", list);//adding the list to our JSON Object
-
-		try (FileWriter file = new FileWriter("./././users.json")) {
-			//File Writer creates a file in write mode at the given location 
-			file.write(obj.toJSONString());
-
-			//write function is use to write in file,
-			//here we write the Json object in the file
-			file.flush();
+		switch(choiceUser) 
+		{
+			case 1:
+				userDao.findAllUsers();
+				break;
+				
+			case 2:
+				int idToFind = inputUser.nextInt();
+				userDao.findUserById(idToFind);
+				break;
+				
+			default:
+				System.out.println("the commande does not exist");
+				break;
 		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		System.out.println(obj);
-		//to print our JSon object 
 	}
 }

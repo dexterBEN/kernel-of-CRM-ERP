@@ -1,1 +1,40 @@
-{"users":["user 1","nacer","user 3"]}
+{
+    "users": [
+        {
+            "id": 89234,
+            "name": "toto",
+            "contacts": [
+                "foo",
+                "jack",
+                "dodo"
+            ]
+        },
+        {
+            "id": 10000,
+            "name": "jack vald",
+            "contacts": [
+                "lo",
+                "fo",
+                "ro"
+            ]
+        },
+        {
+            "id": 30841,
+            "name": "jack frost",
+            "contacts": [
+                "do",
+                "ré",
+                "mi"
+            ]
+        },
+        {
+            "id": 12345,
+            "name": "yonkou",
+            "contacts": [
+                "kata",
+                "die",
+                "ko"
+            ]
+        }
+    ]
+}

@@ -59,6 +59,15 @@ public class User {
 		return "User [id=" + id + ", name=" + name + ", contactUser=" + contactUser + "]";
 	}
 	
+	public int getId(User user) {
+		
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getName()
 	{
 		return name;
@@ -73,6 +82,7 @@ public class User {
 	{
 		return null;
 	}
+	
 	
 	public void setContact(ArrayList<String> contactUser)
 	{

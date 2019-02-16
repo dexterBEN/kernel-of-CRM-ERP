@@ -3,9 +3,11 @@ import java.util.List;
 
 public interface IUserDao {
 	
-	   public List<User> getAllUsers();
+	   public List<User> findAllUsers();
 	   public User findUserById(int id);
+	   public int generateIdNewUser();
 	   public User findUserByName(String name);
+	   public User createUser(User newUser);
 	   public void updateUser(User user);
 	   public void deleteUser(User user);
 }
