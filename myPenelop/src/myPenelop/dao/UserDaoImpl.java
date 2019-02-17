@@ -37,7 +37,7 @@ public class UserDaoImpl implements IUserDao {
 			JSONObject jsonObjectUser  = (JSONObject) obj;
 			//System.out.println(jsonObjectUser);
 			
-			String name = (String) jsonObjectUser.get("name");
+			//String name = (String) jsonObjectUser.get("id");
             //System.out.println(name);
             
             JSONArray usersList = (JSONArray) jsonObjectUser.get("users");
@@ -62,28 +62,25 @@ public class UserDaoImpl implements IUserDao {
 
 	@Override
 	public User findUserById(int idToFind) {
-		
+		System.out.println("good morning this is id: "+idToFind);
 		// TODO Auto-generated method stub
 		JSONParser parser = new JSONParser();
-		Scanner inputUser = new Scanner(System.in);
-		
-		System.out.print("Give an id: ");
-		//idToFind = inputUser.nextInt();
 				
 		try {
 			Object obj = parser.parse(new FileReader("./././users.json"));
 			JSONObject jsonObjectUser  = (JSONObject) obj;
-			//System.out.println(jsonObjectUser);
-			
-			int id = (Integer) jsonObjectUser.get("id");
-            System.out.println("Voici id recup: "+id);
             
             JSONArray usersList = (JSONArray) jsonObjectUser.get("users");
+            
             Iterator<String> iterator = usersList.iterator();
             
             while(iterator.hasNext()) {
             	Object o = iterator.next();
             	//System.out.println(o);
+            	JSONObject test = (JSONObject) o;
+            	String tmp = String.valueOf(test.get("id"));
+            	int id = Integer.parseInt(tmp);
+            	//System.out.println(id);
             	
             	if(idToFind == id) {
             		System.out.print("L'utilisateur à été trouver voici ces information: "+o);
