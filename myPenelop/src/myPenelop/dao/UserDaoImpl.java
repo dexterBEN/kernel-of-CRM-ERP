@@ -1,6 +1,7 @@
 package myPenelop.dao;
 
 import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,10 +36,6 @@ public class UserDaoImpl implements IUserDao {
 		try {
 			Object obj = parser.parse(new FileReader("./././users.json"));
 			JSONObject jsonObjectUser  = (JSONObject) obj;
-			//System.out.println(jsonObjectUser);
-			
-			//String name = (String) jsonObjectUser.get("id");
-            //System.out.println(name);
             
             JSONArray usersList = (JSONArray) jsonObjectUser.get("users");
             Iterator<String> iterator = usersList.iterator();
@@ -62,7 +59,8 @@ public class UserDaoImpl implements IUserDao {
 
 	@Override
 	public User findUserById(int idToFind) {
-		System.out.println("good morning this is id: "+idToFind);
+		//System.out.println("good morning this is id: "+idToFind);
+		
 		// TODO Auto-generated method stub
 		JSONParser parser = new JSONParser();
 				
@@ -106,12 +104,56 @@ public class UserDaoImpl implements IUserDao {
 	}
 	
 	@Override
-	public User findUserByName(String name) {
+	public User findUserByName(String nameResearched) {
+		
+		System.out.println("Wanted: "+nameResearched);
+
+		JSONParser parser = new JSONParser();
+		
+		try {
+			
+			Object obj = parser.parse(new FileReader("./././users.json"));
+			JSONObject jsonObjectUser  = (JSONObject) obj;
+			
+			JSONArray usersList = (JSONArray) jsonObjectUser.get("users");
+			
+			Iterator<String> iterator = usersList.iterator();
+			List<String> usersFinded = new ArrayList<String>();
+					
+			while(iterator.hasNext()) 
+			{
+				Object o = iterator.next();
+				
+            	//System.out.println(o);
+            	JSONObject test = (JSONObject) o;
+            	String name = (String) test.get("name");
+            	
+            	//On vérifie si le nom rentrée correspond à celuil en base
+				if(nameResearched == name) 
+				{
+					usersFinded.add((String) o);
+				}
+			}
+			
+			System.out.println("Voici le(s) résultat(s) correspondant:");
+			System.out.println(usersFinded);
+			
+		}catch (FileNotFoundException e) {
+			e.printStackTrace();
+			
+		}catch (IOException e) {
+			e.printStackTrace();
+			
+		}catch(ParseException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 	
 	@Override
 	public User createUser(User newUser) {
+		
 		return newUser;
 	}
 
