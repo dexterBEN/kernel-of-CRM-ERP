@@ -118,7 +118,7 @@ public class UserDaoImpl implements IUserDao {
 			JSONArray usersList = (JSONArray) jsonObjectUser.get("users");
 			
 			Iterator<String> iterator = usersList.iterator();
-			List<String> usersFinded = new ArrayList<String>();
+			List<String> usersFound = new ArrayList<String>();
 					
 			while(iterator.hasNext()) 
 			{
@@ -128,15 +128,15 @@ public class UserDaoImpl implements IUserDao {
             	JSONObject test = (JSONObject) o;
             	String name = (String) test.get("name");
             	
-            	//On vérifie si le nom rentrée correspond à celuil en base
-				if(nameResearched == name) 
+            	//On vérifie si le nom rentrée correspond à celuil en base on force au même format pour eviter la casse
+				if(name.toUpperCase().contains(nameResearched.toUpperCase())) 
 				{
-					usersFinded.add((String) o);
+					usersFound.add(name);
 				}
 			}
 			
 			System.out.println("Voici le(s) résultat(s) correspondant:");
-			System.out.println(usersFinded);
+			System.out.println(usersFound);
 			
 		}catch (FileNotFoundException e) {
 			e.printStackTrace();

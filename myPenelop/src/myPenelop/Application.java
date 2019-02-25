@@ -29,6 +29,7 @@ public class Application {
 		Scanner inputUser = new Scanner(System.in);
 		
 		int choiceUser = inputUser.nextInt();
+		inputUser.nextLine();
 		IUserDao userDao = new UserDaoImpl();
 		
 		switch(choiceUser) 
@@ -46,8 +47,7 @@ public class Application {
 			
 			case 3:
 				System.out.print("name you research: ");
-				String nameResearched;
-				nameResearched = inputUser.next();
+				String nameResearched = inputUser.nextLine();
 				userDao.findUserByName(nameResearched);
 			break;
 				
